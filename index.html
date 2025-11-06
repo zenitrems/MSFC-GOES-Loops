@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOESEast URL Builder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #101010;
+        color: #ddd;
+        padding: 20px;
+        align-content: center;
+        display: inline-block;
+      }
+      select,
+      input {
+        margin: 5px;
+        padding: 5px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+      }
+      .preview {
+        margin-top: 20px;
+        padding: 10px;
+        background: #181818;
+        border: 1px solid #333;
+      }
+      a {
+        color: #4da3ff;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>GOES East CONUS (NASA NDC)</h2>
+    <form id="linkForm">
+      <label for="band">Satellite Band:</label>
+      <select id="band">
+        <option value="conusband02">Band 02 (Visible Red)</option>
+        <option value="conusband02">Band 05 (Near IR Snow/Ice)</option>
+        <option value="conusband08">Band 08 (IR Water Vapor-upper)</option>
+        <option value="conusband13">Band 13 (IR Clean Longwave)</option>
+        <option value="conusband14">Band 14 (IR Longwave)</option></select
+      ><br />
+
+      <label for="palette">Palette:</label>
+      <select id="palette">
+        <option value="ir1.pal">ir1.pal</option>
+        <option value="ir2.pal">ir2.pal</option>
+        <option value="ir3.pal">ir3.pal</option>
+        <option value="ir4.pal">ir4.pal</option>
+        <option value="ir5.pal">ir5.pal</option>
+        <option value="ir6.pal">ir6.pal</option>
+        <option value="ir7.pal">ir7.pal</option>
+        <option value="ir8.pal">ir8.pal</option>
+        <option value="ir9.pal">ir9.pal</option>
+        <option value="ir10.pal">ir10.pal</option>
+        <option value="wv1.pal">wv1.pal</option>
+        <option value="wv2.pal">wv2.pal</option>
+        <option value="wv3.pal">wv3.pal</option>
+        <option value="wv4.pal">wv4.pal</option>
+        <option value="wv5.pal">wv5.pal</option>
+        <option value="wv6.pal">wv6.pal</option></select
+      ><br />
+
+      <label for="mapcolor">Map Color:</label>
+      <select id="mapcolor">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="cyan">Cyan</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Yellow</option>
+        <option value="magenta">Magenta</option>
+        <option value="White">White</option></select
+      ><br />
+
+      <label for="zoom">Zoom:</label>
+      <select id="zoom">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="4">4</option></select
+      ><br />
+
+      <label for="lat">Lat:</label>
+      <input type="number" id="lat" value="20" step="0.1" /><br />
+
+      <label for="lon">Lon:</label>
+      <input type="number" id="lon" value="-88" step="0.1" /><br />
+
+      <label for="type">Type:</label>
+      <select id="type">
+        <option value="Image">Image</option>
+        <option value="Animation">Animation</option></select
+      ><br />
+
+      <label for="numframes">Frame number {1-50}:</label>
+      <input type="number" id="numframes" value="6" min="1" max="50" /><br />
+
+      <label for="width">Width {200-1400}:</label>
+      <input type="number" id="width" value="800" min="200" max="1400" /><br />
+
+      <label for="height">Height {100-1000}:</label>
+      <input type="number" id="height" value="800" min="100" max="1000" /><br />
+
+      <label for="quality">Quality {25-100}:</label>
+      <input type="number" id="quality" value="100" min="25" max="100" /><br />
+
+      <button type="button" onclick="generateLink()">generateLink</button>
+    </form>
+
+    <div class="preview" id="preview"></div>
+
+    <script>
+      function generateLink() {
+        const base = "https://weather.ndc.nasa.gov/cgi-bin/get-abi";
+        const satellite = "GOESEast";
+
+        const params = {
+          satellite: `${satellite}${document.getElementById("band").value}`,
+          palette: document.getElementById("palette").value,
+          mapcolor: document.getElementById("mapcolor").value,
+          zoom: document.getElementById("zoom").value,
+          lat: document.getElementById("lat").value,
+          lon: document.getElementById("lon").value,
+          type: document.getElementById("type").value,
+          numframes: document.getElementById("numframes").value,
+          width: document.getElementById("width").value,
+          height: document.getElementById("height").value,
+          quality: document.getElementById("quality").value,
+        };
+
+        const query = Object.entries(params)
+          .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
+          .join("&");
+
+        const url = `${base}?${query}`;
+        document.getElementById(
+          "preview"
+        ).innerHTML = `<strong>URL:</strong><br><a href="${url}" target="_blank">${url}</a>`;
+      }
+    </script>
+  </body>
+</html>
