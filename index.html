@@ -8,43 +8,40 @@
   </head>
   <body>
     <div class="box">
-      <h1>GOES (NASA/MSFC) Image URL Builder</h1>
+      <h2>
+        <a href="https://weather.ndc.nasa.gov/goes/">(NASA/MSFC)</a> GOES URL
+        Builder
+      </h2>
 
       <label for="satellite">Satellite:</label>
-      <select id="satellite"></select
-      ><br />
+      <select id="satellite"></select>
 
       <label for="band">Band:</label>
-      <select id="band"></select
-      ><br />
+      <select id="band"></select>
 
       <label for="palette">Palette:</label>
-      <select id="palette"></select
-      ><br />
+      <select id="palette"></select>
 
       <label for="mapcolor">Map Color:</label>
-      <select id="mapcolor"></select
-      ><br />
+      <select id="mapcolor"></select>
 
       <label for="zoom">Zoom:</label>
-      <select id="zoom"></select
-      ><br />
-
-      <label for="latitude">Lat:</label>
-      <input type="number" id="lat" value="20" step="0.1" /><br />
-
-      <label for="longitude">Lon:</label>
-      <input type="number" id="lon" value="-88" step="0.1" /><br />
+      <select id="zoom"></select>
 
       <label for="type">Type:</label>
-      <select id="type"></select
-      ><br />
+      <select id="type"></select>
 
       <label for="numframes">Frames [1-50]:</label>
       <input type="number" id="numframes" value="6" min="1" max="50" /><br />
 
-      <label for="width">Width [200-1400] / Height [100-1000]:</label>
+      <label>Latitude / Longitude:</label>
       <div style="display: flex; gap: 6px">
+        <input type="number" id="lat" value="20" step="0.1" /><br />
+        <input type="number" id="lon" value="-88" step="0.1" /><br />
+      </div>
+
+      <label>Width [200-1400] / Height [100-1000]:</label>
+      <div style="display: flex; gap: 5px">
         <input type="number" id="width" value="800" /><br />
         <input type="number" id="height" value="800" /><br />
       </div>
@@ -53,10 +50,12 @@
       <input type="number" id="quality" value="100" /><br />
 
       <button onclick="generateLink()">Generate</button>
-
       <div id="output"></div>
-      <!-- <div class="image-preview" id="imagePreview">GOES</div> -->
     </div>
+    <footer>
+      GOES weather satellite imagery courtesy of the Earth Science Branch at the
+      NASA George C. Marshall Space Flight in Huntsville, Alabama.
+    </footer>
+    <script src="main.js"></script>
   </body>
-  <script src="main.js"></script>
 </html>
