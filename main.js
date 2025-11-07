@@ -15,7 +15,7 @@ async function loadConfig() {
   }
 }
 
-//Populate avaible products & options
+//Popular opciones Por Caracteristicas disponibles en goes_config.json
 function populateSelect(id, data) {
   const select = document.getElementById(id);
   select.innerHTML = "";
@@ -55,14 +55,6 @@ function generateLink() {
   document.getElementById(
     "output"
   ).innerHTML = `<strong>URL:</strong><br><a href="${url}" target="_blank">${url}</a>`;
-
-  //Fetch image by generated URL (CORS BLOCKED)
-  /*  const imgContainer = document.getElementById("imagePreview");
-  if (params.type === "Image") {
-    imgContainer.innerHTML = `<img src="${url}" alt="GOES Image">`;
-  } else {
-    imgContainer.innerHTML = "Vista previa no disponible para animaciones.";
-  } */
 }
 
 loadConfig();
