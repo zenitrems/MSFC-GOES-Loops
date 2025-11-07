@@ -1,0 +1,178 @@
+{
+    "satellites": [
+        {
+            "value": "GOESEast",
+            "label": "GOES East"
+        }
+    ],
+    "bands": [
+        {
+            "value": "conusband02",
+            "label": "02 0.64 µm CONUS (Visible Red) "
+        },
+        {
+            "value": "conusband05",
+            "label": "05 1.61 µm CONUS (Near IR Snow/Ice)"
+        },
+        {
+            "value": "conusband08",
+            "label": "08 6.19 µm CONUS (IR Water Vapor-upper)"
+        },
+        {
+            "value": "conusband13",
+            "label": "13 10.35 µm CONUS (IR Clean Longwave)"
+        },
+        {
+            "value": "conusband14",
+            "label": "14 11.20 µm Full Disk (IR Longwave)"
+        },
+        {
+            "value": "fullDiskband02",
+            "label": "02 0.64 µm Full Disk (Visible Red) "
+        },
+        {
+            "value": "fullDiskband05",
+            "label": "05 1.61 µm Full Disk (Near IR Snow/Ice)"
+        },
+        {
+            "value": "fullDiskband08",
+            "label": "08 6.19 µm Full Disk (IR Water Vapor-upper)"
+        },
+        {
+            "value": "fullDiskband13",
+            "label": "13 10.35 µm Full Disk (IR Clean Longwave)"
+        },
+        {
+            "value": "fullDiskband14",
+            "label": "14 11.20 µm Full Disk (IR Longwave)"
+        }
+    ],
+    "palettes": [
+        {
+            "value": "ir1.pal",
+            "label": "ir1"
+        },
+        {
+            "value": "ir2.pal",
+            "label": "ir2"
+        },
+        {
+            "value": "ir3.pal",
+            "label": "ir3"
+        },
+        {
+            "value": "ir4.pal",
+            "label": "ir4"
+        },
+        {
+            "value": "ir5.pal",
+            "label": "ir5"
+        },
+        {
+            "value": "ir6.pal",
+            "label": "ir6"
+        },
+        {
+            "value": "ir7.pal",
+            "label": "ir7"
+        },
+        {
+            "value": "ir8.pal",
+            "label": "ir8"
+        },
+        {
+            "value": "ir9.pal",
+            "label": "ir9"
+        },
+        {
+            "value": "ir10.pal",
+            "label": "ir10"
+        },
+        {
+            "value": "wv1.pal",
+            "label": "wv1"
+        },
+        {
+            "value": "wv2.pal",
+            "label": "wv2"
+        },
+        {
+            "value": "wv3.pal",
+            "label": "wv3"
+        },
+        {
+            "value": "wv4.pal",
+            "label": "wv4"
+        },
+        {
+            "value": "wv5.pal",
+            "label": "wv5"
+        },
+        {
+            "value": "wv6.pal",
+            "label": "wv6"
+        }
+    ],
+    "mapcolors": [
+        {
+            "value": "red",
+            "label": "Red"
+        },
+        {
+            "value": "green",
+            "label": "Green"
+        },
+        {
+            "value": "blue",
+            "label": "Blue"
+        },
+        {
+            "value": "cyan",
+            "label": "Cyan"
+        },
+        {
+            "value": "gray",
+            "label": "Gray"
+        },
+        {
+            "value": "orange",
+            "label": "Orange"
+        },
+        {
+            "value": "yellow",
+            "label": "Yellow"
+        },
+        {
+            "value": "magenta",
+            "label": "Magenta"
+        },
+        {
+            "value": "white",
+            "label": "White"
+        }
+    ],
+    "zoom": [
+        {
+            "value": "1",
+            "label": "1"
+        },
+        {
+            "value": "2",
+            "label": "2"
+        },
+        {
+            "value": "4",
+            "label": "4"
+        }
+    ],
+    "types": [
+        {
+            "value": "Image",
+            "label": "Image"
+        },
+        {
+            "value": "Animation",
+            "label": "Animation"
+        }
+    ]
+}
