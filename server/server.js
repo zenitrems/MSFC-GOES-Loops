@@ -28,12 +28,8 @@ app.get("/proxy", async (req, res) => {
     const imgSrc = img.getAttribute("src");
     const fullURL = new URL(imgSrc, url).href;
 
-    // Puedes elegir entre:
-    // 1) Devolver solo la URL JSON
     res.json({ imageUrl: fullURL });
 
-    // 2) O redirigir directamente:
-    // res.redirect(fullURL);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error al obtener la imagen");
