@@ -55,6 +55,39 @@ function generateLink() {
   document.getElementById(
     "output"
   ).innerHTML = `<strong>URL:</strong><br><a href="${url}" target="_blank">${url}</a>`;
+  updatePreview(url);
+}
+
+async function updatePreview(url) {
+  const preview = document.getElementById("preview");
+  if (!preview) return;
+
+  try {
+    //Parse URL
+    const u = new URL(url);
+
+    //Preview Static Values
+    u.searchParams.set("type", "Image");
+    u.searchParams.set("width", "800");
+    u.searchParams.set("height", "800");
+    u.searchParams.set("quality", "55");
+
+    const previewUrl = u.toString();
+
+    //Proxy Bypass CORS Block
+    const proxyUrl = `http://localhost:3000/proxy?url=${encodeURIComponent(
+      previewUrl
+    )}`;
+    const res = await fetch(proxyUrl);
+
+    if (!res.ok) throw new Error(`Error al obtener imagen: ${res.status}`);
+
+    const data = await res.json();
+
+    preview.src = data.imageUrl;
+  } catch (err) {
+    console.error("Error actualizando preview:", err);
+  }
 }
 
 loadConfig();
