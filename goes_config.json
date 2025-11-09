@@ -149,6 +149,10 @@
         {
             "value": "white",
             "label": "White"
+        },
+        {
+            "value": "black",
+            "label": "Black"
         }
     ],
     "zoom": [
