@@ -50,11 +50,15 @@
         <label for="quality">Quality [25-100]:</label>
         <input type="number" id="quality" value="100" /><br />
 
-        <button onclick="generateLink()">Generate</button>
+        <button onclick="generateUrl()">Generate URL</button>
+        <button id="previewButton" hidden onclick="updatePreview()">
+          Load Preview
+        </button>
         <div id="output"></div>
       </div>
       <div class="image-box">
         <img id="preview" alt="GOES preview" />
+        <div></div>
       </div>
     </div>
     <footer>
