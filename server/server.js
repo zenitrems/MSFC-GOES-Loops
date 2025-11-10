@@ -10,20 +10,18 @@ app.use(cors()); // Allow frontEnd queries
 app.get("/proxy", async (req, res) => {
   try {
     const { url } = req.query;
-    console.debug(url);
-    if (!url) return res.status(400).send("Falta el parámetro ?url=");
+    if (!url) return res.status(400).send("400");
+    console.debug(req.path, req.host, url);
 
     // Obtener el HTML del CGI remoto
     const response = await fetch(url);
     const html = await response.text();
 
-    console.debug(html);
-
     // Extraer la URL del <img src="...">
     const dom = new JSDOM(html);
     const img = dom.window.document.querySelector("img");
 
-    if (!img) return res.status(404).send("No se encontró ninguna imagen");
+    if (!img) return res.status(404).send("No image found");
 
     const imgSrc = img.getAttribute("src");
     const fullURL = new URL(imgSrc, url).href;
@@ -32,11 +30,11 @@ app.get("/proxy", async (req, res) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error al obtener la imagen");
+    res.status(500).send("Image fetch error");
   }
 });
 
 const PORT = 3000;
 app.listen(PORT, () =>
-  console.log(`Servidor proxy corriendo en http://localhost:${PORT}`)
+  console.log(`Proxy on http://localhost:${PORT}`)
 );
