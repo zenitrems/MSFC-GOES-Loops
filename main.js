@@ -54,12 +54,13 @@ function generateUrl() {
   const url = `${base}?${query}`;
 
   GEN_URL = url;
+
   /* Inject Generated URL into the HTML */
   document.getElementById(
     "output"
   ).innerHTML = `<strong>URL:</strong><br><a href="${url}" target="_blank">${url}</a>`;
 
-  document.getElementById("previewButton").hidden = false;
+  document.getElementById("preview-button").hidden = false;
   //updatePreview(url);
 }
 
@@ -73,10 +74,11 @@ async function updatePreview() {
     const u = new URL(GEN_URL);
 
     //Static Parameters
+
     u.searchParams.set("type", "Image");
-    u.searchParams.set("width", "600");
-    u.searchParams.set("height", "600");
-    u.searchParams.set("quality", "100");
+    u.searchParams.set("width", "800");
+    u.searchParams.set("height", "800");
+    //u.searchParams.set("quality", "100");
 
     const previewUrl = u.toString();
 
@@ -89,9 +91,54 @@ async function updatePreview() {
     const data = await res.json();
 
     preview.src = data.imageUrl;
+    //document.getElementById("image-box").hidden = false;
   } catch (err) {
     console.error("Error actualizando preview:", err);
   }
 }
 
+//Auto Refresh Preview Function
+function autoRefreshPreview() {
+  console.log("Auto-refresh function called");
+  if (!GEN_URL) return; //If no URL generated, exit function
+  if (!document.getElementById("auto-refresh").checked) return; //If not checked, exit function
+  console.log("Auto-refresh enabled");
+  setInterval(() => {
+    updatePreview();
+    console.log("Preview refreshed");
+  }, 300000); //Refresh every 5 minutes
+  console.log("Auto-refresh interval set");
+}
+
+//UTC Clock Function
+function clockUTC() {
+  const date = new Date();
+  let dayUTC = date.getUTCDate().toString().padStart(2, "0");
+  let monthUTC = (date.getUTCMonth() + 1).toString().padStart(2, "0");
+  let yearUTC = date.getUTCFullYear().toString().padStart(2, "0");
+
+  let dateUTC = `${dayUTC}-${monthUTC}-${yearUTC}`;
+
+  let hourUTC = date.getUTCHours().toString().padStart(2, "0");
+  let minutesUTC = date.getUTCMinutes().toString().padStart(2, "0");
+  let secondsUTC = date.getUTCSeconds().toString().padStart(2, "0");
+
+  let timeUTC = `${hourUTC}:${minutesUTC} UTC`;
+
+  let datetimeUTC = `${dateUTC} ${timeUTC}`;
+
+  return datetimeUTC;
+}
+//Set UTC Clock in HTML
+let val; //Global variable to store the interval ID
+function setUTCClock() {
+  const utcClock = document.getElementById("utcClock");
+
+  val = setInterval(() => {
+    utcClock.textContent = clockUTC();
+  }, 1000); //Update every second
+  console;
+}
+
 loadConfig();
+setUTCClock();

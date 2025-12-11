@@ -50,15 +50,21 @@
         <label for="quality">Quality [25-100]:</label>
         <input type="number" id="quality" value="100" /><br />
 
+        <label for="auto-refresh">Auto Refresh Preview</label>
+        <input
+          type="checkbox"
+          id="auto-refresh"
+          onclick="autoRefreshPreview()"
+        />
         <button onclick="generateUrl()">Generate URL</button>
-        <button id="previewButton" hidden onclick="updatePreview()">
+        <button id="preview-button" hidden onclick="updatePreview()">
           Load Preview
         </button>
+        <p><strong>UTC Time:</strong> <span id="utcClock"></span></p>
         <div id="output"></div>
       </div>
       <div class="image-box">
         <img id="preview" alt="GOES preview" />
-        <div></div>
       </div>
     </div>
     <footer>
