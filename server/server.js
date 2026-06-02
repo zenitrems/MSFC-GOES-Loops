@@ -2,9 +2,16 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 import { JSDOM } from "jsdom";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 app.use(cors()); // Allow frontEnd queries
+
+// Serve frontend static files from project root
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "..")));
 
 //Rute
 app.get("/proxy", async (req, res) => {

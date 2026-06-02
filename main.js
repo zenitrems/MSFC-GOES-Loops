@@ -27,7 +27,7 @@ function populateSelect(id, data) {
   });
 }
 
-//Build URL
+/* Build URL */
 let GEN_URL = ""; //Save Generated Url
 function generateUrl() {
   const base = "https://weather.ndc.nasa.gov/cgi-bin/get-abi";
@@ -74,15 +74,14 @@ async function updatePreview() {
     const u = new URL(GEN_URL);
 
     //Static Parameters
-
     u.searchParams.set("type", "Image");
     u.searchParams.set("width", "800");
     u.searchParams.set("height", "800");
-    //u.searchParams.set("quality", "100");
+    u.searchParams.set("quality", "100");
 
     const previewUrl = u.toString();
 
-    const proxyUrl = `http://localhost:3000/proxy?url=${encodeURIComponent(
+    const proxyUrl = `http://192.168.1.33:3000/proxy?url=${encodeURIComponent(
       previewUrl
     )}`;
     //query Localhost proxy
